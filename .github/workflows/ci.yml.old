@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build Docker image
+        run: docker build -t todo-app .
+      
+      - name: Run container and test
+        run: |
+          docker run -d -p 5000:5000 --name test-container todo-app
+          sleep 5
+          curl http://localhost:5000/
+          docker stop test-container
