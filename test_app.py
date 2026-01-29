@@ -14,7 +14,7 @@ def test_home(client):
     """Test the home route returns correct message."""
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Todo API is running!" in response.data
+    assert b"Todo API v2 is running!" in response.data
 
 def test_get_todos_empty(client):
     """Test getting todos when list is empty."""
