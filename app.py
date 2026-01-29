@@ -7,7 +7,7 @@ todos = []
 
 @app.route('/')
 def home():
-    return "Todo API is running!"
+    return "Todo API v2  is running!"
 
 @app.route('/todos', methods=['GET'])
 def get_todos():
